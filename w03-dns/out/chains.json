@@ -1,0 +1,858 @@
+{
+  "www.adobe.com": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "23.32.4.146",
+            "23.32.4.154",
+            "23.32.4.168",
+            "23.32.4.177",
+            "23.32.4.178",
+            "23.32.4.201",
+            "23.32.4.209",
+            "23.32.4.216",
+            "23.32.4.237"
+          ],
+          "chain": [
+            "www.adobe.com",
+            "www.adobe.com.edgesuite.net",
+            "a1319.dscr.akamai.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "23.44.175.16",
+            "23.44.175.17"
+          ],
+          "chain": [
+            "www.adobe.com",
+            "www.adobe.com.edgesuite.net",
+            "a1319.dscr.akamai.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "23.67.53.145",
+            "23.67.53.98"
+          ],
+          "chain": [
+            "www.adobe.com",
+            "www.adobe.com.edgesuite.net",
+            "a1319.dscr.akamai.net"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "23.32.4.105",
+            "23.32.4.136"
+          ],
+          "chain": [
+            "www.adobe.com",
+            "www.adobe.com.edgesuite.net",
+            "a1319.dscr.akamai.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "23.210.250.154",
+            "23.210.250.184"
+          ],
+          "chain": [
+            "www.adobe.com",
+            "www.adobe.com.edgesuite.net",
+            "a1319.dscr.akamai.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "23.32.4.121",
+            "23.32.4.136",
+            "23.32.4.138",
+            "23.32.4.34",
+            "23.32.4.80"
+          ],
+          "chain": [
+            "www.adobe.com",
+            "www.adobe.com.edgesuite.net",
+            "a1319.dscr.akamai.net"
+          ]
+        }
+      }
+    }
+  },
+  "www.apple.com": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "104.94.216.37"
+          ],
+          "chain": [
+            "www.apple.com",
+            "www-apple-com.v.aaplimg.com",
+            "www.apple.com.edgekey.net",
+            "e6858.dsce9.akamaiedge.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "23.0.193.49"
+          ],
+          "chain": [
+            "www.apple.com",
+            "www-apple-com.v.aaplimg.com",
+            "www.apple.com.edgekey.net",
+            "e6858.dsce9.akamaiedge.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "104.94.216.37"
+          ],
+          "chain": [
+            "www.apple.com",
+            "www-apple-com.v.aaplimg.com",
+            "www.apple.com.edgekey.net",
+            "e6858.dsce9.akamaiedge.net"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "104.94.216.37"
+          ],
+          "chain": [
+            "www.apple.com",
+            "www-apple-com.v.aaplimg.com",
+            "www.apple.com.edgekey.net",
+            "e6858.dsce9.akamaiedge.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "23.210.107.50"
+          ],
+          "chain": [
+            "www.apple.com",
+            "www-apple-com.v.aaplimg.com",
+            "www.apple.com.edgekey.net",
+            "e6858.dsce9.akamaiedge.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "104.94.216.37"
+          ],
+          "chain": [
+            "www.apple.com",
+            "www-apple-com.v.aaplimg.com",
+            "www.apple.com.edgekey.net",
+            "e6858.dsce9.akamaiedge.net"
+          ]
+        }
+      }
+    }
+  },
+  "www.bbc.co.uk": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "151.101.0.81",
+            "151.101.128.81",
+            "151.101.192.81",
+            "151.101.64.81"
+          ],
+          "chain": [
+            "www.bbc.co.uk",
+            "www.bbc.co.uk.pri.bbc.co.uk",
+            "bbc.map.fastly.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "151.101.0.81",
+            "151.101.128.81",
+            "151.101.192.81",
+            "151.101.64.81"
+          ],
+          "chain": [
+            "www.bbc.co.uk",
+            "www.bbc.co.uk.pri.bbc.co.uk",
+            "bbc.map.fastly.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "146.75.48.81"
+          ],
+          "chain": [
+            "www.bbc.co.uk",
+            "www.bbc.co.uk.pri.bbc.co.uk",
+            "bbc.map.fastly.net"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "151.101.0.81",
+            "151.101.128.81",
+            "151.101.192.81",
+            "151.101.64.81"
+          ],
+          "chain": [
+            "www.bbc.co.uk",
+            "www.bbc.co.uk.pri.bbc.co.uk",
+            "bbc.map.fastly.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "151.101.0.81",
+            "151.101.128.81",
+            "151.101.192.81",
+            "151.101.64.81"
+          ],
+          "chain": [
+            "www.bbc.co.uk",
+            "www.bbc.co.uk.pri.bbc.co.uk",
+            "bbc.map.fastly.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "146.75.48.81"
+          ],
+          "chain": [
+            "www.bbc.co.uk",
+            "www.bbc.co.uk.pri.bbc.co.uk",
+            "bbc.map.fastly.net"
+          ]
+        }
+      }
+    }
+  },
+  "www.cnn.com": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "151.101.131.5",
+            "151.101.195.5",
+            "151.101.3.5",
+            "151.101.67.5"
+          ],
+          "chain": [
+            "www.cnn.com",
+            "cnn-tls.map.fastly.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "151.101.131.5",
+            "151.101.195.5",
+            "151.101.3.5",
+            "151.101.67.5"
+          ],
+          "chain": [
+            "www.cnn.com",
+            "cnn-tls.map.fastly.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "146.75.51.5"
+          ],
+          "chain": [
+            "www.cnn.com",
+            "cnn-tls.map.fastly.net"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "151.101.131.5",
+            "151.101.195.5",
+            "151.101.3.5",
+            "151.101.67.5"
+          ],
+          "chain": [
+            "www.cnn.com",
+            "cnn-tls.map.fastly.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "151.101.131.5",
+            "151.101.195.5",
+            "151.101.3.5",
+            "151.101.67.5"
+          ],
+          "chain": [
+            "www.cnn.com",
+            "cnn-tls.map.fastly.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "146.75.51.5"
+          ],
+          "chain": [
+            "www.cnn.com",
+            "cnn-tls.map.fastly.net"
+          ]
+        }
+      }
+    }
+  },
+  "www.github.com": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "20.200.245.247"
+          ],
+          "chain": [
+            "www.github.com",
+            "github.com"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "20.27.177.113"
+          ],
+          "chain": [
+            "www.github.com",
+            "github.com"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "20.200.245.247"
+          ],
+          "chain": [
+            "www.github.com",
+            "github.com"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "20.200.245.247"
+          ],
+          "chain": [
+            "www.github.com",
+            "github.com"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "20.205.243.166"
+          ],
+          "chain": [
+            "www.github.com",
+            "github.com"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "20.200.245.247"
+          ],
+          "chain": [
+            "www.github.com",
+            "github.com"
+          ]
+        }
+      }
+    }
+  },
+  "www.korea.ac.kr": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "163.152.6.10"
+          ],
+          "chain": [
+            "www.korea.ac.kr"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "163.152.6.10"
+          ],
+          "chain": [
+            "www.korea.ac.kr"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "163.152.6.10"
+          ],
+          "chain": [
+            "www.korea.ac.kr"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "163.152.6.10"
+          ],
+          "chain": [
+            "www.korea.ac.kr"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "163.152.6.10"
+          ],
+          "chain": [
+            "www.korea.ac.kr"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "163.152.6.10"
+          ],
+          "chain": [
+            "www.korea.ac.kr"
+          ]
+        }
+      }
+    }
+  },
+  "www.microsoft.com": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "104.94.218.45"
+          ],
+          "chain": [
+            "www.microsoft.com",
+            "www.microsoft.com-c-3.edgekey.net",
+            "e13678.dscb.akamaiedge.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "23.0.194.92"
+          ],
+          "chain": [
+            "www.microsoft.com",
+            "www.microsoft.com-c-3.edgekey.net",
+            "e13678.dscb.akamaiedge.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "104.94.218.45"
+          ],
+          "chain": [
+            "www.microsoft.com",
+            "www.microsoft.com-c-3.edgekey.net",
+            "e13678.dscb.akamaiedge.net"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "104.94.218.45"
+          ],
+          "chain": [
+            "www.microsoft.com",
+            "www.microsoft.com-c-3.edgekey.net",
+            "e13678.dscb.akamaiedge.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "118.215.84.29"
+          ],
+          "chain": [
+            "www.microsoft.com",
+            "www.microsoft.com-c-3.edgekey.net",
+            "e13678.dscb.akamaiedge.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "104.94.218.45"
+          ],
+          "chain": [
+            "www.microsoft.com",
+            "www.microsoft.com-c-3.edgekey.net",
+            "e13678.dscb.akamaiedge.net"
+          ]
+        }
+      }
+    }
+  },
+  "www.netflix.com": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "207.45.72.1",
+            "207.45.73.1"
+          ],
+          "chain": [
+            "www.netflix.com",
+            "www.prod.ftl.netflix.com"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "207.45.72.1",
+            "207.45.73.1"
+          ],
+          "chain": [
+            "www.netflix.com",
+            "www.prod.ftl.netflix.com"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "207.45.72.1",
+            "207.45.73.1"
+          ],
+          "chain": [
+            "www.netflix.com",
+            "www.prod.ftl.netflix.com"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "207.45.72.1",
+            "207.45.73.1"
+          ],
+          "chain": [
+            "www.netflix.com",
+            "www.prod.ftl.netflix.com"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "207.45.72.1",
+            "207.45.73.1"
+          ],
+          "chain": [
+            "www.netflix.com",
+            "www.prod.ftl.netflix.com"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "207.45.72.1",
+            "207.45.73.1"
+          ],
+          "chain": [
+            "www.netflix.com",
+            "www.prod.ftl.netflix.com"
+          ]
+        }
+      }
+    }
+  },
+  "www.nytimes.com": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "151.101.1.164",
+            "151.101.129.164",
+            "151.101.193.164",
+            "151.101.65.164"
+          ],
+          "chain": [
+            "www.nytimes.com",
+            "www.prd.map.nytimes.com",
+            "www.prd.map.nytimes.xovr.nyt.net",
+            "nytimes.map.fastly.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "151.101.1.164",
+            "151.101.129.164",
+            "151.101.193.164",
+            "151.101.65.164"
+          ],
+          "chain": [
+            "www.nytimes.com",
+            "www.prd.map.nytimes.com",
+            "www.prd.map.nytimes.xovr.nyt.net",
+            "nytimes.map.fastly.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "146.75.49.164"
+          ],
+          "chain": [
+            "www.nytimes.com",
+            "www.prd.map.nytimes.com",
+            "www.prd.map.nytimes.xovr.nyt.net",
+            "nytimes.map.fastly.net"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "151.101.1.164",
+            "151.101.129.164",
+            "151.101.193.164",
+            "151.101.65.164"
+          ],
+          "chain": [
+            "www.nytimes.com",
+            "www.prd.map.nytimes.com",
+            "www.prd.map.nytimes.xovr.nyt.net",
+            "nytimes.map.fastly.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "151.101.1.164",
+            "151.101.129.164",
+            "151.101.193.164",
+            "151.101.65.164"
+          ],
+          "chain": [
+            "www.nytimes.com",
+            "www.prd.map.nytimes.com",
+            "www.prd.map.nytimes.xovr.nyt.net",
+            "nytimes.map.fastly.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "146.75.49.164"
+          ],
+          "chain": [
+            "www.nytimes.com",
+            "www.prd.map.nytimes.com",
+            "www.prd.map.nytimes.xovr.nyt.net",
+            "nytimes.map.fastly.net"
+          ]
+        }
+      }
+    }
+  },
+  "www.spotify.com": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "151.101.131.42",
+            "151.101.195.42",
+            "151.101.3.42",
+            "151.101.67.42"
+          ],
+          "chain": [
+            "www.spotify.com",
+            "atc.spotify.map.fastly.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "151.101.131.42",
+            "151.101.195.42",
+            "151.101.3.42",
+            "151.101.67.42"
+          ],
+          "chain": [
+            "www.spotify.com",
+            "atc.spotify.map.fastly.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "146.75.51.42"
+          ],
+          "chain": [
+            "www.spotify.com",
+            "atc.spotify.map.fastly.net"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "151.101.131.42",
+            "151.101.195.42",
+            "151.101.3.42",
+            "151.101.67.42"
+          ],
+          "chain": [
+            "www.spotify.com",
+            "atc.spotify.map.fastly.net"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "151.101.131.42",
+            "151.101.195.42",
+            "151.101.3.42",
+            "151.101.67.42"
+          ],
+          "chain": [
+            "www.spotify.com",
+            "atc.spotify.map.fastly.net"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "146.75.51.42"
+          ],
+          "chain": [
+            "www.spotify.com",
+            "atc.spotify.map.fastly.net"
+          ]
+        }
+      }
+    }
+  },
+  "www.stanford.edu": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "15.197.167.90",
+            "3.33.186.135"
+          ],
+          "chain": [
+            "www.stanford.edu",
+            "stanford.netlifyglobalcdn.com"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "15.197.167.90",
+            "3.33.186.135"
+          ],
+          "chain": [
+            "www.stanford.edu",
+            "stanford.netlifyglobalcdn.com"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "15.197.167.90",
+            "3.33.186.135"
+          ],
+          "chain": [
+            "www.stanford.edu",
+            "stanford.netlifyglobalcdn.com"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "15.197.167.90",
+            "3.33.186.135"
+          ],
+          "chain": [
+            "www.stanford.edu",
+            "stanford.netlifyglobalcdn.com"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "15.197.167.90",
+            "3.33.186.135"
+          ],
+          "chain": [
+            "www.stanford.edu",
+            "stanford.netlifyglobalcdn.com"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "15.197.167.90",
+            "3.33.186.135"
+          ],
+          "chain": [
+            "www.stanford.edu",
+            "stanford.netlifyglobalcdn.com"
+          ]
+        }
+      }
+    }
+  },
+  "www.wikipedia.org": {
+    "measurements": {
+      "home-wifi": {
+        "google": {
+          "addresses": [
+            "103.102.166.224"
+          ],
+          "chain": [
+            "www.wikipedia.org",
+            "dyna.wikimedia.org"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "103.102.166.224"
+          ],
+          "chain": [
+            "www.wikipedia.org",
+            "dyna.wikimedia.org"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "103.102.166.224"
+          ],
+          "chain": [
+            "www.wikipedia.org",
+            "dyna.wikimedia.org"
+          ]
+        }
+      },
+      "phone-hotspot": {
+        "google": {
+          "addresses": [
+            "103.102.166.224"
+          ],
+          "chain": [
+            "www.wikipedia.org",
+            "dyna.wikimedia.org"
+          ]
+        },
+        "quad9": {
+          "addresses": [
+            "103.102.166.224"
+          ],
+          "chain": [
+            "www.wikipedia.org",
+            "dyna.wikimedia.org"
+          ]
+        },
+        "system": {
+          "addresses": [
+            "103.102.166.224"
+          ],
+          "chain": [
+            "www.wikipedia.org",
+            "dyna.wikimedia.org"
+          ]
+        }
+      }
+    }
+  }
+}
