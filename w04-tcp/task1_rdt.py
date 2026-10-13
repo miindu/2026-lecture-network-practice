@@ -68,26 +68,62 @@ class Sender:
     """
 
     def __init__(self, data_channel, ack_channel, data):
-        raise NotImplementedError("write your sender")
+        self.data_channel = data_channel
+        self.ack_channel = ack_channel
+        self.packets = []
+
+        for i in range(0, len(data), PAYLOAD):
+            self.packets.append(data[i:i + PAYLOAD])
+
+        self.seq = 0
+        self.timer = 0
+        self.waiting = False
 
     def step(self):
-        """Do one unit of work. Return False when you believe you are done."""
-        raise NotImplementedError
+        ack = self.ack_channel.receive()
 
+        if ack is not None and self.waiting and ack == self.seq:
+            self.seq += 1
+            self.waiting = False
+
+        if self.seq >= len(self.packets):
+            return False
+
+        if not self.waiting or self.timer >= 5:
+            packet = (self.seq, self.packets[self.seq])
+            self.data_channel.send(packet)
+            self.waiting = True
+            self.timer = 0
+
+        self.timer += 1
+        return True
 
 class Receiver:
     """Your receiver. Hands back the reassembled bytes via `.data()`."""
 
     def __init__(self, data_channel, ack_channel):
-        raise NotImplementedError("write your receiver")
+        self.data_channel = data_channel
+        self.ack_channel = ack_channel
+        self.expected = 0
+        self.received = bytearray()
 
     def step(self):
-        raise NotImplementedError
+        packet = self.data_channel.receive()
+
+        if packet is None:
+            return
+
+        seq, payload = packet
+
+        if seq == self.expected:
+            self.received.extend(payload)
+            self.expected += 1
+
+        if seq < self.expected:
+            self.ack_channel.send(seq)
 
     def data(self):
-        """The bytes reassembled so far."""
-        raise NotImplementedError
-
+        return bytes(self.received)
 
 # ------------------------------------------------------------------- harness
 def verify(seed=246, size=2000, max_steps=200_000):

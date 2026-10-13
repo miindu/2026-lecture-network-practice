@@ -39,26 +39,20 @@ class FixedWindow:
 
 
 class YourControl:
-    """Your congestion control.
-
-    Things worth knowing before you start:
-
-    * The link drains one packet per slot and the round trip is 20 slots, so
-      the pipe holds about 20 packets. Above that you are only filling a queue.
-    * The queue is 10 packets deep and drops from the tail. Filling it does not
-      make you faster - it makes you slower, and everybody behind you too.
-    * Cutting hard on every loss costs you throughput. Not cutting costs you
-      correctness. §3.7 is the argument about where between those to sit.
-    * You are allowed to grow differently before and after your first loss.
-      That distinction has a name in the textbook.
-    """
+    """TCP-style congestion control using slow start and AIMD."""
 
     def __init__(self):
-        self.window = 1
-        raise NotImplementedError("write your congestion control")
+        self.window = 1.0
+        self.ssthresh = 20.0
 
     def on_ack(self):
-        raise NotImplementedError
+        if self.window < self.ssthresh:
+            self.window += 1.0
+        else:
+            self.window += 1.0 / self.window
+
+        self.window = min(self.window, 24.0)
 
     def on_loss(self):
-        raise NotImplementedError
+        self.ssthresh = max(2.0, self.window * 0.70)
+        self.window = self.ssthresh
