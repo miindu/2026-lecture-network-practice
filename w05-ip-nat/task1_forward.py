@@ -3,53 +3,99 @@
 
 Textbook §4.3.2 (IPv4 addressing, CIDR) and §4.3.3 (forwarding).
 
-Two things a router does with every packet: work out which prefixes the
-destination falls inside, and pick the longest one. The second is the whole
-of "longest prefix match", and it is the reason the internet's routing table
-can hold a million entries and still be answerable.
-
-You build both, from integers up. No `ipaddress` module - that library is
-exactly the thing you are supposed to understand this week.
-
     python3 task1_forward.py --verify
 """
 import argparse
 
 
-def parse_cidr(cidr):
-    """'163.152.6.0/24' -> (network as int, prefix length).
+def ip_to_int(address):
+    parts = address.split(".")
+    if len(parts) != 4:
+        raise ValueError("Invalid IP address")
 
-    Requirements: reject a prefix length outside 0-32, and reject an address
-    whose host bits are set when they should not be (163.152.6.5/24 is a
-    common way to write a host, but it is not a network).
-    """
-    raise NotImplementedError("parse a CIDR block")
+    number = 0
+    for part in parts:
+        if not part.isdigit() or not 0 <= int(part) <= 255:
+            raise ValueError("Invalid IP address")
+        number = (number << 8) | int(part)
+
+    return number
+
+
+def int_to_ip(number):
+    return ".".join(
+        str((number >> shift) & 255)
+        for shift in (24, 16, 8, 0)
+    )
+
+
+def parse_cidr(cidr):
+    parts = cidr.split("/")
+    if len(parts) != 2:
+        raise ValueError("Invalid CIDR")
+
+    network = ip_to_int(parts[0])
+
+    if not parts[1].isdigit():
+        raise ValueError("Invalid prefix")
+
+    prefix = int(parts[1])
+    if prefix < 0 or prefix > 32:
+        raise ValueError("Invalid prefix")
+
+    mask = (0xFFFFFFFF << (32 - prefix)) & 0xFFFFFFFF
+
+    if (network & mask) != network:
+        raise ValueError("Host bits are set")
+
+    return network, prefix
 
 
 def network_range(cidr):
-    """'163.152.6.0/24' -> (first usable, last usable, broadcast) as strings.
+    network, prefix = parse_cidr(cidr)
 
-    Careful at the edges. /31 and /32 do not have a usable host range in the
-    ordinary sense - decide what you return and say so in observation.md.
-    """
-    raise NotImplementedError("compute the range")
+    broadcast = network | ((1 << (32 - prefix)) - 1)
+
+    if prefix >= 31:
+        first = network
+        last = broadcast
+    else:
+        first = network + 1
+        last = broadcast - 1
+
+    return (
+        int_to_ip(first),
+        int_to_ip(last),
+        int_to_ip(broadcast)
+    )
 
 
 class ForwardingTable:
-    """Longest-prefix-match forwarding.
-
-    add(cidr, next_hop)  ·  lookup(address) -> next_hop or None
-
-    The default route 0.0.0.0/0 matches everything and is the shortest prefix,
-    so it must lose to any other match. If two entries have the same prefix
-    length, the table is malformed - say what you do.
-    """
+    def __init__(self):
+        self.routes = []
 
     def add(self, cidr, next_hop):
-        raise NotImplementedError
+        network, prefix = parse_cidr(cidr)
+
+        for net, plen, hop in self.routes:
+            if net == network and plen == prefix:
+                raise ValueError("Duplicate route")
+
+        self.routes.append((network, prefix, next_hop))
 
     def lookup(self, address):
-        raise NotImplementedError
+        ip = ip_to_int(address)
+        best_prefix = -1
+        best_hop = None
+
+        for network, prefix, hop in self.routes:
+            mask = (0xFFFFFFFF << (32 - prefix)) & 0xFFFFFFFF
+
+            if (ip & mask) == network and prefix > best_prefix:
+                best_prefix = prefix
+                best_hop = hop
+
+        return best_hop
 
 
 # ------------------------------------------------------------------- harness
@@ -70,7 +116,7 @@ TABLE = [
 ]
 
 LOOKUP_CASES = [
-    ("10.20.30.70",   "lab-rack-2"),     # inside all four 10.x entries
+    ("10.20.30.70",   "lab-rack-2"),
     ("10.20.30.10",   "lab-floor"),
     ("10.20.99.1",    "eng-building"),
     ("10.99.0.1",     "campus"),
@@ -115,3 +161,4 @@ if __name__ == "__main__":
     p.add_argument("--verify", action="store_true")
     a = p.parse_args()
     raise SystemExit(verify() if a.verify else p.print_help())
+

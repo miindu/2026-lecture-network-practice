@@ -55,10 +55,28 @@ class YourTable:
     """
 
     def __init__(self):
-        raise NotImplementedError("write your table")
+        self.tables = {}
+        self.masks = {}
 
     def add(self, network, prefix_len, next_hop):
-        raise NotImplementedError
+        if prefix_len not in self.tables:
+            self.tables[prefix_len] = {}
+            self.masks[prefix_len] = (
+                0xFFFFFFFF << (32 - prefix_len)
+            ) & 0xFFFFFFFF
+
+        mask = self.masks[prefix_len]
+        self.tables[prefix_len][network & mask] = next_hop
 
     def lookup(self, address):
-        raise NotImplementedError
+        for prefix_len in range(32, -1, -1):
+            if prefix_len not in self.tables:
+                continue
+
+            mask = self.masks[prefix_len]
+            network = address & mask
+
+            if network in self.tables[prefix_len]:
+                return self.tables[prefix_len][network]
+
+        return None
