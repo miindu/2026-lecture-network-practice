@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 """Week 6 · Task 1 — Link state: build the forwarding table yourself.
 
@@ -14,6 +15,7 @@ in the packet. Build it.
     python3 task1_linkstate.py --verify
 """
 import argparse
+import heapq
 
 # Undirected weighted graph: node -> {neighbour: cost}
 TOPOLOGY = {
@@ -33,7 +35,24 @@ def dijkstra(graph, source):
 
     You write the loop. `heapq` is allowed; `networkx` is not.
     """
-    raise NotImplementedError("implement Dijkstra")
+    distances = {source: 0}
+    pq = [(0, source)]
+
+    while pq:
+        cost, node = heapq.heappop(pq)
+
+        if cost > distances[node]:
+            continue
+
+        for neighbor, weight in graph[node].items():
+            new_cost = cost + weight
+
+            if new_cost < distances.get(neighbor, float("inf")):
+                distances[neighbor] = new_cost
+                heapq.heappush(pq, (new_cost, neighbor))
+
+    distances.pop(source, None)
+    return distances
 
 
 def forwarding_table(graph, source):
@@ -48,7 +67,28 @@ def forwarding_table(graph, source):
     works, but think about what a router does when two shortest paths tie, and
     pick a rule. Say which in observation.md.
     """
-    raise NotImplementedError("implement the forwarding table")
+    best = {source: (0, "")}
+    pq = [(0, "", source)]
+
+    while pq:
+        cost, hop, node = heapq.heappop(pq)
+
+        if (cost, hop) != best[node]:
+            continue
+
+        for neighbor, weight in graph[node].items():
+            if neighbor == source:
+                continue
+
+            first_hop = neighbor if node == source else hop
+            candidate = (cost + weight, first_hop)
+
+            if candidate < best.get(neighbor, (float("inf"), "")):
+                best[neighbor] = candidate
+                heapq.heappush(pq, (candidate[0], candidate[1], neighbor))
+
+    return {node: hop for node, (cost, hop) in best.items()
+            if node != source}
 
 
 def link_down(graph, a, b):
@@ -113,3 +153,4 @@ if __name__ == "__main__":
     p.add_argument("--verify", action="store_true")
     a = p.parse_args()
     raise SystemExit(verify() if a.verify else p.print_help())
+

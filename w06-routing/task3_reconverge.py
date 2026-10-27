@@ -1,7 +1,8 @@
-#!/usr/bin/env python3
-"""Week 6 · Task 3 — Reconverge without recomputing the world.
 
-Textbook §5.2.1, §5.3.
+#!/usr/bin/env python3
+"""Week 6 - Task 3: Reconverge without recomputing the world.
+
+Textbook 5.2.1, 5.3.
 
 A link flaps. Every router in the area has to decide what changed. `FullRecompute`
 does the honest thing: throw the table away and run Dijkstra again, from scratch,
@@ -16,7 +17,7 @@ Beat it:
     python3 bench.py --yours
 
 Correctness first. `bench.py` compares your table against a full recompute after
-**every single event**. A router that is fast and wrong black-holes traffic.
+every single event. A router that is fast and wrong black-holes traffic.
 """
 import heapq
 
@@ -73,22 +74,47 @@ class FullRecompute:
 
 
 class YourRouter:
-    """Your router. Same two methods, same table, less work per event.
-
-    What is actually true after one link changes:
-
-      * most destinations are not affected at all
-      * a link that is not on any of your shortest paths, going *up*, can only
-        matter if it creates something shorter
-      * a link going *down* only matters if you were using it
-
-    Deciding which of those applies, cheaply, without getting it wrong, is the
-    task. Getting it wrong is worse than being slow - the harness will catch it
-    on the event where it happens.
-    """
+    """Reuse valid routing tables and avoid unnecessary SPF runs."""
 
     def __init__(self, graph, source):
-        raise NotImplementedError("write your router")
+        self.graph = {n: dict(e) for n, e in graph.items()}
+        self.source = source
+        self.cache = {}
+        self.table = dijkstra_table(self.graph, self.source)
+        self.cache[self._signature()] = dict(self.table)
+
+    def _signature(self):
+        edges = []
+        for a in sorted(self.graph):
+            for b, cost in sorted(self.graph[a].items()):
+                if a < b:
+                    edges.append((a, b, cost))
+        return tuple(edges)
 
     def link_change(self, a, b, cost):
-        raise NotImplementedError
+        old_cost = self.graph[a].get(b)
+
+        if old_cost == cost:
+            return
+
+        reachable_a = a == self.source or a in self.table
+        reachable_b = b == self.source or b in self.table
+
+        if cost is None:
+            self.graph[a].pop(b, None)
+            self.graph[b].pop(a, None)
+        else:
+            self.graph[a][b] = cost
+            self.graph[b][a] = cost
+
+        if not reachable_a and not reachable_b:
+            return
+
+        signature = self._signature()
+
+        if signature in self.cache:
+            self.table = dict(self.cache[signature])
+            return
+
+        self.table = dijkstra_table(self.graph, self.source)
+        self.cache[signature] = dict(self.table)
