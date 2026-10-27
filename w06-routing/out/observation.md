@@ -98,35 +98,51 @@ A missing response does not necessarily mean that forwarding has stopped. Later 
 
 
 
-\## Task 2 - Parts B and C: OSPF Experiment
+\## Task 2 - Part B: OSPF Link Failure and Restoration
 
+Three FRRouting 9.1.0 routers (r1, r2, r3) were started using Docker Compose. OSPF neighbor relationships were confirmed to be in the Full state.
 
+### B2 - Routes Learned Through OSPF
 
-The local OSPF experiment was not performed.
+Before the failure, r1 was directly connected to 172.18.0.0/16 through eth0 and 172.19.0.0/16 through eth1, each with an OSPF cost of 10.
 
+The network 172.20.0.0/16 was reached through either r2 or r3, with a total cost of 20. Two equal-cost next hops were present.
 
+### B3 - Link Failure
 
-Docker Desktop was unavailable, and WSL 2 could not start because firmware virtualization was reported as disabled. The visible BIOS settings did not provide an identifiable virtualization option.
+The r1-r2 link was disabled by bringing down eth1 on r1.
 
+After the failure, r1 reached 172.19.0.0/16 through r3 at 172.18.0.3 via eth0, with an OSPF cost of 30.
 
+The route to 172.20.0.0/16 continued through r3, with a cost of 20. The alternative next hop through r2 disappeared.
 
-Consequently, routing tables before and after a link failure and actual reconvergence times were not measured.
+### B4 - Reconvergence Time
 
+The scenario script detected a change in the OSPF routing table after 2 seconds.
 
+This value was measured by polling the routing table once per second, so it is an approximate detection time rather than a precise protocol convergence timestamp.
 
-OSPF link failure detection may depend on the hello and dead intervals when no faster failure signal is available. Link restoration is different because a new neighbor adjacency must be established.
+### B5 - Link Restoration
 
+After eth1 was brought back up and 30 seconds were allowed for recovery, r1 again showed 172.19.0.0/16 as directly connected through eth1 with cost 10.
 
+The two equal-cost paths toward 172.20.0.0/16 were also restored.
 
-A link-cost change does not require physical link failure detection. Its new routing information can be propagated through LSAs, followed by SPF recalculation. However, actual comparative timings were not measured.
+The exact restoration convergence time was not measured. Therefore, a numerical comparison between failure and restoration times cannot be made.
 
+## Task 2 - Part C: OSPF Link Cost Change
 
+The OSPF cost of r1's eth0 interface was increased from 10 to 100.
 
-These explanations are theoretical and do not replace the required measurements.
+After the change, r1 reached 172.18.0.0/16 through r2 at 172.19.0.2 via eth1, with a cost of 30, instead of selecting the expensive direct OSPF path.
 
+The route toward 172.20.0.0/16 used r2 via eth1, with cost 20, rather than two equal-cost next hops.
 
+This confirms that OSPF selects routes based on accumulated path cost rather than simply the number of hops.
 
-\## Task 3 - SPF Optimization
+The updated routing table was checked after a 15-second wait. Because the precise moment of convergence was not measured, the cost-change convergence time cannot be quantitatively compared with the 2-second link-failure measurement.
+
+## Task 3 - SPF Optimization
 
 
 
